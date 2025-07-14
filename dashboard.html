@@ -1,39 +1,33 @@
-<!-- dashboard.html -->
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <title>داشبورد گیاه</title>
-  <style>
-    body { background: #f0f8ff; text-align: center; padding: 40px; font-family: sans-serif; }
-    .info-box { background: #ffffff; margin: 15px auto; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 250px; }
-    .emoji { font-size: 40px; }
-  </style>
-</head>
-<body>
-  <h1>:blossom: داشبورد گیاه شما</h1>
+<h1>🌼 داشبورد گیاه شما</h1>
   <h2 id="plant-name"></h2>
 
-  <div class="info-box">
-    <div class="emoji">🌡</div>
-    <p>دما: 24 °C</p>
-  </div>
-  <div class="info-box">
-    <div class="emoji">:droplet:</div>
-    <p>رطوبت: 60 %</p>
-  </div>
-  <div class="info-box">
-    <div class="emoji">:sunny:</div>
-    <p>نور: 300 لوکس</p>
-  </div>
-  <div class="info-box">
-    <div class="emoji">:seedling:</div>
-    <p>رطوبت خاک: 45 %</p>
-  </div>
+  <div id="dashboard-data"></div>
 
+  <script src="js/mock-data.js"></script>
   <script>
-    const name = localStorage.getItem("selectedPlant") || "گیاه ناشناس";
-    document.getElementById("plant-name").textContent = 🌿 ${name};
+    const selectedPlant = localStorage.getItem("selectedPlant");
+    document.getElementById("plant-name").textContent = 🌿 ${selectedPlant};
+
+    const data = mockData[selectedPlant];
+    const dash = document.getElementById("dashboard-data");
+    dash.innerHTML = 
+      <div class="info-box">
+        <div class="emoji">🌡️</div>
+        <p>دما: ${data.temp} °C</p>
+      </div>
+      <div class="info-box">
+        <div class="emoji">💧</div>
+        <p>رطوبت: ${data.humidity} %</p>
+      </div>
+      <div class="info-box">
+        <div class="emoji">☀️</div>
+        <p>نور: ${data.light} لوکس</p>
+      </div>
+      <div class="info-box">
+        <div class="emoji">🌱</div>
+        <p>رطوبت خاک: ${data.soil} %</p>
+      </div>
+    ;
   </script>
 </body>
 </html>
