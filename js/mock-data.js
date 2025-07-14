@@ -1,4 +1,4 @@
-<!-- js/mock-data.js -->
+
 const mockPlants = [
   { name: "عروس برگ مشکی", emoji: "🪴" },
   { name: "نازبو", emoji: "🌱" },
