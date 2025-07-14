@@ -4,12 +4,12 @@
   <div id="dashboard-data"></div>
 
   <script src="js/mock-data.js"></script>
-  <script>
-    const selectedPlant = localStorage.getItem("selectedPlant");
-    document.getElementById("plant-name").textContent = 🌿 ${selectedPlant};
+<script>
+  const selectedPlant = localStorage.getItem("selectedPlant");
+  const dash = document.getElementById("dashboard-data");
 
+  if (selectedPlant && mockData[selectedPlant]) {
     const data = mockData[selectedPlant];
-    const dash = document.getElementById("dashboard-data");
     dash.innerHTML = 
       <div class="info-box">
         <div class="emoji">🌡️</div>
@@ -28,6 +28,9 @@
         <p>رطوبت خاک: ${data.soil} %</p>
       </div>
     ;
-  </script>
+  } else {
+    dash.innerHTML = <p>لطفا ابتدا گیاه را انتخاب کنید و از صفحه اصلی وارد شوید.</p>;
+  }
+</script>
 </body>
 </html>
