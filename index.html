@@ -12,25 +12,24 @@
   </style>
 </head>
 <body>
-  <h1>:herb: لطفاً گیاه خود را انتخاب کنید</h1>
-  <div onclick="selectPlant('عروس برگ مشکی')" class="plant-item">
-    <div class="emoji">🪴</div>
-    <p>عروس برگ مشکی</p>
-  </div>
-  <div onclick="selectPlant('نازبو')" class="plant-item">
-    <div class="emoji">:seedling:</div>
-    <p>نازبو</p>
-  </div>
-  <div onclick="selectPlant('گل آلاله')" class="plant-item">
-    <div class="emoji">:hibiscus:</div>
-    <p>گل آلاله</p>
-  </div>
+  <h1>🌿 لطفاً گیاه خود را انتخاب کنید</h1>
+  <div id="plants-container"></div>
 
+  <script src="js/mock-data.js"></script>
   <script>
     function selectPlant(name) {
       localStorage.setItem('selectedPlant', name);
       window.location.href = "loading.html";
     }
+
+    const container = document.getElementById("plants-container");
+    mockPlants.forEach(plant => {
+      const div = document.createElement("div");
+      div.className = "plant-item";
+      div.onclick = () => selectPlant(plant.name);
+      div.innerHTML = <div class="emoji">${plant.emoji}</div><p>${plant.name}</p>;
+      container.appendChild(div);
+    });
   </script>
 </body>
 </html>
