@@ -1,0 +1,36 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>انتخاب گیاه</title>
+  <style>
+    body { font-family: sans-serif; background: #fef9f9; text-align: center; padding: 30px; }
+    .plant-item { display: inline-block; margin: 20px; cursor: pointer; border: 2px solid #ffb6c1; padding: 15px; border-radius: 15px; background: #fff0f5; transition: transform 0.3s; }
+    .plant-item:hover { transform: scale(1.05); }
+    .emoji { font-size: 60px; }
+  </style>
+</head>
+<body>
+  <h1>:herb: لطفاً گیاه خود را انتخاب کنید</h1>
+  <div onclick="selectPlant('عروس برگ مشکی')" class="plant-item">
+    <div class="emoji">🪴</div>
+    <p>عروس برگ مشکی</p>
+  </div>
+  <div onclick="selectPlant('نازبو')" class="plant-item">
+    <div class="emoji">:seedling:</div>
+    <p>نازبو</p>
+  </div>
+  <div onclick="selectPlant('گل آلاله')" class="plant-item">
+    <div class="emoji">:hibiscus:</div>
+    <p>گل آلاله</p>
+  </div>
+
+  <script>
+    function selectPlant(name) {
+      localStorage.setItem('selectedPlant', name);
+      window.location.href = "loading.html";
+    }
+  </script>
+</body>
+</html>
