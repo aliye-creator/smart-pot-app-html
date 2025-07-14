@@ -35,22 +35,23 @@
   <h1>🌿 لطفاً گیاه خود را انتخاب کنید</h1>
   <div id="plants-container"></div>
 
- <script src="js/mock-data.js" defer></script>
-<script defer>
-  window.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById("plants-container");
-    mockPlants.forEach(plant => {
-      const div = document.createElement("div");
-      div.className = "plant-item";
-      div.onclick = () => {
-        localStorage.setItem('selectedPlant', plant.name);
-        window.location.href = "loading.html";
-      };
-      div.innerHTML = <div class="emoji">${plant.emoji}</div><p>${plant.name}</p>;
-      container.appendChild(div);
-    });
-  });
-</script>
+  <script src="js/mock-data.js" defer></script>
+  <script defer>
+    window.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById("plants-container");
+
+      if (typeof mockPlants === "undefined") {
+        container.innerHTML = "<p>❌ خطا در بارگذاری داده‌ها</p>";
+        return;
+      }
+
+      mockPlants.forEach(plant => {
+        const div = document.createElement("div");
+        div.className = "plant-item";
+        div.onclick = () => {
+          localStorage.setItem('selectedPlant', plant.name);
+          window.location.href = "loading.html";
+        };
         div.innerHTML = `<div class="emoji">${plant.emoji}</div><p>${plant.name}</p>`;
         container.appendChild(div);
       });
